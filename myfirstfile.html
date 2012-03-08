@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.1/jquery.min.js"></script>
+<script type="text/javascript" src="http://static.stackmob.com/js/json2-min.js"></script>
+<script type="text/javascript" src="http://static.stackmob.com/js/underscore-1.3.0-min.js"></script>
+<script type="text/javascript" src="http://static.stackmob.com/js/backbone-0.5.3-min.js"></script>
+<script type="text/javascript" src="http://static.stackmob.com/js/stackmob-js-0.1.0-min.js"></script>
+ 
+<script type="text/javascript">
+/* <![CDATA[ */
+  StackMob.init({
+   appName: 'stackmob_app_name',
+   version: 0,
+   dev: true
+  });
+/* ]]> */
+</script>
+ 
+</head>
+<body>
+
+<p><b>This demo MUST be run in <a href="https://www.stackmob.com/platform/help/tutorials/html5_js_sdk#a-step_2_of_3:_running_this_file_locally" target="_blank">StackMob's Local HTML Runner</a> or be hosted on StackMob's HTML5 hosting solution.  Otherwise the AJAX calls will not work.  This demo will NOT work otherwise.</b></p>
+ 
+<input id="username" type="text" value=""/>
+<input id="create" type="submit" onclick="create();" value="Create User"/>
+<input id="read" type="submit" onclick="read();" value="Read User"/>
+ 
+<script type="text/javascript">
+  function create() {
+    var username = document.getElementById('username').value;
+    if (username != '') {
+      var user = new StackMob.User({
+        'username': username,
+        'password': 'afakepassword',
+        'age': 30
+      });
+ 
+      //Call StackMob via Ajax to create a user
+      user.create({
+        success: function(model) {
+          console.debug("We've written the user to StackMob!");
+          console.debug(model);
+        },
+        error: function(model, response) {
+          console.debug(response);
+        }
+      });
+    }}
+
+ 
+  function read() {
+    var username = document.getElementById('username').value;
+    if (username != '') {
+      //Call StackMob via Ajax to read a user
+      var fetchuser = new StackMob.User({ 'username': username });
+      fetchuser.fetch({
+        success: function(model) {
+          console.debug("We fetched the user from StackMob!");
+          console.debug(model.toJSON());
+        },
+        error: function(model, response) {
+          console.debug(response);
+        }
+      });
+    }
+ 
+  }
+</script>
+ 
+</body>
+</html>
