@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>TBD</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <!-- Le styles -->
+    <link href="public/css/bootstrap.css" rel="stylesheet">
+    <style>
+      body {
+        padding-top: 60px; /* 60px to make the container go all the way to the bottom of the topbar */
+      }
+    </style>
+    <link href="public/css/bootstrap-responsive.css" rel="stylesheet">
+    <link href="public/css/app.css" rel="stylesheet">
+
+    <!-- Le HTML5 shim, for IE6-8 support of HTML5 elements -->
+    <!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+    <!-- Le fav and touch icons -->
+	 <!--
+    <link rel="shortcut icon" href="public/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="public/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="public/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="public/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="public/ico/apple-touch-icon-57-precomposed.png">
+    -->
+  </head>
+
+  <body>
+	 <div id="login_signup" class="container-fluid">
+		<div class="row-fluid">
+			<div class="span7">
+			</div>
+			<div class="span3">
+    			<form id="login" class="well form-horizontal">
+    				<legend>Login</legend>
+					<fieldset>
+						<div class="control-group">
+    						<input type="text" placeholder="Email" class="input-large username">
+						</div>
+						<div class="control-group">
+    						<input type="password" placeholder="Password" class="input-large password">
+						</div>
+						<div class="control-group pull-right">
+							<button class="btn btn-primary btn-large" type="submit">Login</button>
+						</div>
+					</fieldset>
+				</form>
+    			<form id="signup" class="well form-horizontal">
+    				<legend>Sign Up</legend>
+					<fieldset>
+						<div class="control-group">
+    						<input type="text" placeholder="Email" class="input-large username">
+							<span class="help-inline hidden">Invalid email address!</span>
+						</div>
+						<div class="control-group">
+    						<input type="password" placeholder="Password" class="input-large password">
+							<span class="help-inline hidden">Empty password!</span>
+						</div>
+						<div class="control-group pull-right">
+							<span class="help-inline hidden">Email exists! Try Login  </span>
+							<button class="btn btn-primary btn-large" type="submit">Sign Up</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+		<div class="modal hide" id="connect_modal">
+			<div class="modal-body">
+				<form>
+					<label>Pick a screen name blab blab...</label>
+					<input type="text" class="span3" placeholder="screen name">
+				</form>
+				<button id="netflix-connect" class="btn btn-large btn-danger">Connect with Netflix</button>
+			</div>
+		</div>
+	 </div>
+
+    <!-- Le javascript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+	 <script type="text/javascript" data-main="public/js/main.js" src="public/js/jquery/require-jquery-1.6.2.js"></script>
+
+  </body>
+</html>
