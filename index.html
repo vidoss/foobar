@@ -33,21 +33,24 @@
   </head>
 
   <body>
-	 <div id="login_signup" class="container-fluid">
+	 <div id="login_signup" class="container-fluid hidden page">
 		<div class="row-fluid">
 			<div class="span7">
 			</div>
-			<div class="span3">
+			<div id="login-signup" class="span3">
     			<form id="login" class="well form-horizontal">
     				<legend>Login</legend>
 					<fieldset>
 						<div class="control-group">
     						<input type="text" placeholder="Email" class="input-large username">
+							<span class="help-inline hidden">Invalid email address!</span>
 						</div>
 						<div class="control-group">
     						<input type="password" placeholder="Password" class="input-large password">
+							<span class="help-inline hidden">Empty password!</span>
 						</div>
 						<div class="control-group pull-right">
+							<span class="help-inline hidden">Login failed!</span>
 							<button class="btn btn-primary btn-large" type="submit">Login</button>
 						</div>
 					</fieldset>
@@ -71,21 +74,79 @@
 				</form>
 			</div>
 		</div>
-		<div class="modal hide" id="connect_modal">
-			<div class="modal-body">
-				<form>
-					<label>Pick a screen name blab blab...</label>
-					<input type="text" class="span3" placeholder="screen name">
-				</form>
-				<button id="netflix-connect" class="btn btn-large btn-danger">Connect with Netflix</button>
+	 </div>
+	<div id="oauth" class="container-fluid hidden page">
+		<div class="row-fluid">
+			<div class="alert alert-success">
+				<h4> Loading .... </h4>
+				<div class="progress progress-striped active">
+					<div class="bar" style="width: 10%;"></div>
+				</div>
 			</div>
 		</div>
-	 </div>
+	</div>
+	<div class="modal hide" id="connect-modal">
+		<div class="modal-body">
+			<form>
+				<fieldset>
+				<div class="control-group handle">
+					<label class="control-label">
+						<strong>Pick an username:</strong> (users of this site will identify you by this username)
+					</label>
+					<div class="controls">
+						<h1 class="help-inline" class="pull-left">@</h1><input type="text" class="span5" id="handle"/>
+					</div>
+					<p class="help-block"></p>
+				</div>
+				<div class="control-group">
+					<label class="control-label">&nbsp;</label>
+					<div class="controls">
+					</div>
+					<p class="help-block alert alert-info">
+						When you click "Link with Netflix" you will be redirected to Netflix website. 
+						Please select "Yes, Link This Account" so we can connect you with other
+						Netflix users of similar movies and TV show preference.
+				</div>
+				</fieldset>
+			</form>
+			<button id="netflix-connect" class="btn btn-large btn-danger pull-right">
+				Link with Netflix
+			</button>
+		</div>
+	</div>
+	<div id="user_home" class="hidden page">
+		<div class="navbar navbar-fixed-top">
+			<div class="navbar-inner">
+				<div class="container">
+					<ul class="nav">
+						<li class="active">
+							<h2 id="handle_display">@</h2>
+						</li>
+					</ul>
+					<ul class="nav pull-right">
+						<li class="active">
+							<div id="logout" class="btn btn-inverse">Logout</div>
+						</li>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span2">
+					<!--Sidebar content-->
+				</div>
+				<div class="span10">
+					<!--Body content-->
+				</div>
+			</div>
+		</div>
+	</div>
 
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-	 <script type="text/javascript" data-main="public/js/main.js" src="public/js/jquery/require-jquery-1.6.2.js"></script>
+	 <script type="text/javascript" data-main="public/js/main.js" src="public/js/jquery/require-jquery-1.7.2.js"></script>
 
   </body>
 </html>
