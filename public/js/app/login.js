@@ -2,7 +2,7 @@
 
 	ns.SignupView = Backbone.View.extend({
 
-		el: "#signup",
+		el: "#login_signup #signup",
 
 		events: {
 			'blur .username': 'validateUsername',
@@ -55,14 +55,21 @@
 			this.$('button[type="submit"]').addClass("disabled");
 			user.create({
 				success: _.bind(function(model, data) {
-					this.$('button[type="submit"]').removeClass('disabled');
-					ns.objs.views.linkNetflixView = new ns.LinkNetflixView({model: user});
+					user.login(true,{
+						success: _.bind(function(model, data) {
+							this.$('button[type="submit"]').removeClass('disabled');
+							ns.objs.views.linkNetflixView = new ns.LinkNetflixView({model: user});
+						}, this)
+					});
 				},this),
 				error: _.bind(function(model, data) {
 					var submitBtn = this.$('button[type="submit"]').removeClass('disabled');
-					if (data.error && data.error.indexOf("Duplicate") != -1) {
-						submitBtn.siblings(".help-inline").removeClass('hidden')
-							.closest('.control-group').addClass('error');
+					if (data.error) { 
+						if(data.error.indexOf("Duplicate") != -1) {
+							data.error = ns.nls.userExists;
+						}
+						submitBtn.siblings(".help-inline").text(data.error).removeClass('hidden')
+								.closest('.control-group').addClass('error');
 					}
 				},this)
 			});
@@ -71,6 +78,42 @@
 
 	});
 
+	ns.LoginView = ns.SignupView.extend({
+
+		el: "#login_signup #login",
+
+		onSubmit: function() {
+			this.reset();
+         if (!this.validateUsername() || !this.validatePassword()) {
+            return false;
+         }
+         var user = new StackMob.User({
+                           username: this.$(".username").val(),
+                           password: this.$(".password").val()
+                        });
+         this.$('button[type="submit"]').addClass("disabled");			
+			user.login(true, {
+				success: _.bind(function() {
+					user.fetch({
+						success: _.bind(function() {
+							this.$('button[type="submit"]').removeClass('disabled');
+							ns.objs.currentUser = user;
+							ns.appRouter.navigate("user/"+user.get("netflix_id"),{trigger: true});
+						}, this)
+					});
+				},this),
+				error: _.bind(function(data) {
+					var submitBtn = this.$('button[type="submit"]').removeClass('disabled');
+					if (data.error) {
+						submitBtn.siblings(".help-inline").text(data.error_description).removeClass('hidden')
+							.closest('.control-group').addClass('error');
+					}
+				}, this)
+			});
+			return false;
+		}
+
+	});
 
 	ns.LinkNetflixView = Backbone.View.extend({
 		
@@ -81,7 +124,7 @@
 		},
 
 		initialize: function() {
-			this.$el.modal({backdrop: 'static',keyboard: false});
+			this.$el.modal({backdrop: 'static'});
 			this.handle = this.$("#handle");
 		},
 
@@ -122,7 +165,7 @@
 		},
 
 		redirectToNetflix: function() {
-			StackMob.customcode('oauth_redirect_url',{username:this.model.get('username')},{
+			StackMob.customcode('oauth_redirect_url',{username: this.model.get('username')},{
 				success: function(result) {
 					var cbUrl = String(top.location).replace(/#[^#]*$/,"")
 												+ "#oauth"
@@ -133,20 +176,5 @@
 
 	});
 
-	$(function() {
-		ns.objs = {views:{},models:{}};
-		ns.objs.app = new ns.SignupView();
-
-		ns.nls = {
-			"usernameEmpty": "Username Empty!",
-			"usernameExists": "Username taken! Please try another one"
-		}
-	});
-
 })(jQuery, FLIXBUD.namespace("main"));
 
-StackMob.init({
-	appName: 'foobar',
-	version: 0,
-	dev: true
-});
