@@ -64,13 +64,36 @@
 				ns.appRouter.navigate("",{trigger: true});
 				return;
 			}
-			if (!ns.objs.views.topNavbar) {
-				try {
-					ns.objs.views.topNavbar = new ns.TopNavbarView();
-				} catch(e) {
-					console.error(e);
+
+			var initViews = function(userModel) {
+				if (!ns.objs.views.topNavbar) {
+					try {
+						ns.objs.views.topNavbar = new ns.TopNavbarView({model: userModel});
+						ns.objs.views.userProfile = new ns.UserProfileEditView({user: userModel});
+					} catch(e) {
+						console.error(e);
+					}
 				}
+			};
+
+			if (ns.objs.models.currentUser) {
+				initViews(ns.objs.models.currentUser);
+			} else {
+				var user = new StackMob.User({username: StackMob.getLoggedInUser()});
+				user.fetch({
+					success: function(model) {
+						ns.objs.models.currentUser = initViews(model);
+					},
+					error: function() {
+						user.logout({
+							success: function() {
+								window.location = "/";
+							}
+						});
+					}
+				});
 			}
+
 			this.showPage("#user_home");
 		},
 

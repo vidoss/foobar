@@ -6,3 +6,44 @@
 	width: 480px;
 	margin-left: 10px;
 }
+
+#user_home .tabs-left li > .hero-unit {
+	padding: 60px;
+	cursor: pointer;
+	outline: 0;
+}
+
+#user_home .tabs-left li.active > .hero-unit {
+	cursor: auto;
+}
+
+#profile_modal {
+	width: 790px;
+	left: 40%;
+	top: 40%;
+}
+
+#profile_modal .modal-body {
+	max-height: 550px;
+}
+
+#profile_modal #recently_watched {
+	overflow-x: auto;
+	white-space: nowrap;
+}
+
+#profile_modal #recently_watched li {
+	display: inline-block;
+	float: none;
+}
+
+#profile_modal #recently_watched .thumbnails {
+	margin-left: 0;
+}
+
+#profile_modal .well {
+	-moz-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset;
+	-webkit-box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset;
+	box-shadow: 0 1px 1px rgba(0, 0, 0, 0.5) inset;
+	background-color: #eeeeee;
+}

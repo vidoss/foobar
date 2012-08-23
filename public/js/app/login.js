@@ -97,7 +97,7 @@
 					user.fetch({
 						success: _.bind(function() {
 							this.$('button[type="submit"]').removeClass('disabled');
-							ns.objs.currentUser = user;
+							ns.objs.models.currentUser = user;
 							ns.appRouter.navigate("user/"+user.get("netflix_id"),{trigger: true});
 						}, this)
 					});
@@ -124,7 +124,7 @@
 		},
 
 		initialize: function() {
-			this.$el.modal({backdrop: 'static'});
+			this.$el.modal({backdrop: 'static',keyboard: false});
 			this.handle = this.$("#handle");
 		},
 
@@ -146,6 +146,7 @@
 
 			query.select('handle');
 			query.equals('handle',val);
+
 			users.bind('reset', _.bind(function() {
 
 				if (users.length > 0) {
