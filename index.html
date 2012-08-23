@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>TBD</title>
+    <title>Flix Buddy</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
     <meta name="author" content="">
@@ -131,14 +131,131 @@
 				</div>
 			</div>
 		</div>
-		<div class="container-fluid">
+		<div class="container-fluid" id="user_main">
 			<div class="row-fluid">
-				<div class="span2">
-					<!--Sidebar content-->
+				<div class="tabbable tabs-left">
+					<ul class="nav nav-tabs">
+						<li class="active"><a data-toggle="tab" class="hero-unit" href="#ninety"><h1>90%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#eighty"><h1>80%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#seventy"><h1>70%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#sixty"><h1>60%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#fifty"><h1>50%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#fourty"><h1>40%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#thirty"><h1>30%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#twenty"><h1>20%</h1></a></li>
+						<li><a data-toggle="tab" class="hero-unit" href="#ten"><h1>10%</h1></a></li>
+					</ul>
+					<div class="tab-content">
+						<div class="tab-pane active" id="ninety"> This is 90 pane </div>
+						<div class="tab-pane" id="eighty"> This is 80 pane </div>
+						<div class="tab-pane" id="seventy"> This is 70 pane </div>
+						<div class="tab-pane" id="sixty"> This is 60 pane </div>
+						<div class="tab-pane" id="fifty"> This is 50 pane </div>
+						<div class="tab-pane" id="fourty"> This is 40 pane </div>
+						<div class="tab-pane" id="thirty"> This is 30 pane </div>
+						<div class="tab-pane" id="twenty"> This is 20 pane </div>
+						<div class="tab-pane" id="ten"> This is 10 pane </div>
+					</div>
 				</div>
-				<div class="span10">
-					<!--Body content-->
+			</div>
+		</div>
+		<div class="modal hide" id="profile_modal">
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+				<h3>Update your movie profile:</h3>
+			</div>
+			<div class="modal-body">
+				<div id="movie_profile">
+			<ul class="thumbnails">
+            <li class="">
+              <a href="#" class="thumbnail like empty">
+                <img src="http://placehold.it/110x150&text=Like" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail like empty">
+                <img src="http://placehold.it/110x150&text=Like" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail ok empty">
+                <img src="http://placehold.it/64x90&text=ok" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail ok empty">
+                <img src="http://placehold.it/64x90&text=ok" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail ok empty">
+                <img src="http://placehold.it/64x90&text=ok" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail ok empty">
+                <img src="http://placehold.it/64x90&text=ok" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail ok empty">
+                <img src="http://placehold.it/64x90&text=ok" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+            <li class="">
+              <a href="#" class="thumbnail neeh empty">
+                <img src="http://placehold.it/38x53&neeh" alt="">
+              </a>
+            </li>
+          </ul>
 				</div>
+				<div class="well">
+					<h4>Add from your recently watched list:</h4>
+					<div id="recently_watched">
+						<div class="row">
+							<ul class="thumbnails">
+							</ul>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<a href="#" class="btn btn-primary" id="save_profile">Save changes</a>
 			</div>
 		</div>
 	</div>
@@ -147,6 +264,15 @@
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
 	 <script type="text/javascript" data-main="public/js/main.js" src="public/js/jquery/require-jquery-1.7.2.js"></script>
-
+	 <script type="text/template" id="recently_watch_item_tmpl">
+			<li class="span1">
+				<div class="thumbnail">
+					<img src="<%=box_art_medium%>" title="<%=title%>" />
+					<div class="caption">
+						<a href="#" class="btn pull-right add-movie" data-movie-id="<%=history_id%>">Add</a>
+					</div>
+				</div>
+			</li>
+	 </script>
   </body>
 </html>
